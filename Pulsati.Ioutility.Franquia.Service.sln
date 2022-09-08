@@ -23,11 +23,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pulsati.Core.DI", "core\Pul
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pulsati.Core.Api", "core\Pulsati.Core.Api\Pulsati.Core.Api.csproj", "{586C7F3A-1698-49DB-9B72-1D39D6464CF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioutility.Franquias.Repository", "servico\Ioutility.Franquias.Repository\Ioutility.Franquias.Repository.csproj", "{9A7BDC9D-B413-442F-A126-FDD0E1610478}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioutility.Franquias.Repository", "servico\Ioutility.Franquias.Repository\Ioutility.Franquias.Repository.csproj", "{9A7BDC9D-B413-442F-A126-FDD0E1610478}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioutility.Franquias.DI", "servico\Ioutility.Franquia.DI\Ioutility.Franquias.DI.csproj", "{C4643DB7-1A30-43BA-94D8-EABAAFED585B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioutility.Franquias.DI", "servico\Ioutility.Franquia.DI\Ioutility.Franquias.DI.csproj", "{C4643DB7-1A30-43BA-94D8-EABAAFED585B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ioutility.Franquias.Api", "servico\Ioutility.Franquia.Api\Ioutility.Franquias.Api.csproj", "{C7779BEF-3D7B-4C93-BDBB-25419EDA9C27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ioutility.Franquias.Api", "servico\Ioutility.Franquia.Api\Ioutility.Franquias.Api.csproj", "{C7779BEF-3D7B-4C93-BDBB-25419EDA9C27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DF3E4A8-3C57-436C-8CB4-046D4CF18910}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

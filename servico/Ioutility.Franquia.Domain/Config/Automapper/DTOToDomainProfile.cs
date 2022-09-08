@@ -23,7 +23,7 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
                 enderecoDTO.Cep,
                 enderecoDTO.Arquivos
                 ));
-            CreateMap<DadoBancarioDTO, FranquiaDadoBancario>().ConstructUsing(dto => new FranquiaDadoBancario(dto.Id));
+            //CreateMap<DadoBancarioDTO, FranquiaDadoBancario>().ConstructUsing(dto => new FranquiaDadoBancario(dto.Id));
 
             CreateMap<FranquiaDTO, Franquia>().ConstructUsing((dto, context)
                 => new Franquia(dto.Id, dto.Nome, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<FranquiaDadoBancario>(dto.DadoBancario)));

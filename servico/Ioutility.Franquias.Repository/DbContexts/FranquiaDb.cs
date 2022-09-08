@@ -20,19 +20,8 @@ namespace Ioutility.Franquias.Repository.DbContexts
             modelBuilder.ApplyConfiguration(new EntityMap<EventSource>());
             modelBuilder.ApplyConfiguration(new FranquiaMap());
 
-            _removerDeleteEmCascata(modelBuilder);
-
             base.OnModelCreating(modelBuilder);
         }
 
-        private static void _removerDeleteEmCascata(ModelBuilder modelBuilder)
-        {
-            var cascadeFKs = modelBuilder.Model.GetEntityTypes()
-                           .SelectMany(t => t.GetForeignKeys())
-                           .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
-
-            foreach (var fk in cascadeFKs)
-                fk.DeleteBehavior = DeleteBehavior.NoAction;
-        }
     }
 }
