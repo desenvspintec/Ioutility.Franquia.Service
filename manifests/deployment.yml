@@ -1,16 +1,16 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: ioutilityfranquiaservice 
+  name: ioutility-franquia-service 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ioutilityfranquiaservice
+      app: ioutility-franquia-service
   template:
     metadata:
       labels:
-        app: ioutilityfranquiaservice 
+        app: ioutility-franquia-service 
     spec:
       containers:
         - name: ioutilityfranquiaservice 
