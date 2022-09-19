@@ -19,6 +19,7 @@ namespace Pulsati.Core.Api.Controllers
         where TAtualizarCommand : class, IEntityDTO
         where TBuscaPorIdViewModel : class
     {
+        protected const int quantidadeLimiteResultadoParaBusca = 20;
         protected readonly IEntityQueryRepository<TEntity> RepositoryReadonly;
         protected readonly IMapper Mapper;
         protected readonly EntityCommandHandler<TEntity, TRegistrarCommand, TAtualizarCommand> CommandHandler;

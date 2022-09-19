@@ -1,4 +1,6 @@
 ﻿using Ioutility.Franquias.Domain.Franquias.Models;
+using Ioutility.Franquias.Domain.Procedimentos.DTOs;
+using Ioutility.Franquias.Domain.Procedimentos.Models;
 using Pulsati.Core.Domain.DisplayNames;
 using Pulsati.Core.Domain.Interfaces;
 using Pulsati.Core.Domain.Interfaces.Entitys;
@@ -31,6 +33,18 @@ namespace Ioutility.Franquias.Api.Services
                 new DisplayName(nameof(EnderecoVO.Estado), "Estado"),
                 new DisplayName(nameof(EnderecoVO.Numero), "Número"),
 
+                new DisplayName(nameof(Procedimento.TipoProcedimentoId), "Tipo do procedimento"),
+                new DisplayName(nameof(Procedimento.Especialidade), "Especialidade"),
+                new DisplayName(nameof(ProcedimentoDTO.ValorSugerido), "Valor Sugerido"),
+                new DisplayName(nameof(ProcedimentoDTO.ValorMinimo), "Valor Mínimo"),
+                new DisplayName(nameof(ProcedimentoDTO.ValorMaximo), "Valor Máximo"),
+                new DisplayName(nameof(ProcedimentoDTO.ValorCustoAdicional), "Custos Adicionais"),
+                new DisplayName(nameof(ProcedimentoDTO.ComissaoValor), "Valor da comissão"),
+                new DisplayName(nameof(ProcedimentoDTO.ComissaoTipo), "Tipo da comissão"),
+
+                new DisplayName(nameof(ProcedimentoListagemViewModel.ProcedimentoStatus), "Status"),
+                new DisplayName(nameof(ProcedimentoListagemViewModel.TipoProcedimento), "Tipo do procedimento"),
+                new DisplayName(nameof(ProcedimentoListagemViewModel.CodProcedimento), "Cod. procedimento"),
 
         };
         }

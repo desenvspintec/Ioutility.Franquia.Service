@@ -2,7 +2,7 @@
 
 namespace Ioutility.Franquias.Api.Config.Automapper
 {
-    public class ApiDTOToDomainProfile : DomainToDTOProfile
+    public class ApiDTOToDomainProfile : DTOToDomainProfile
     {
     }
 }
