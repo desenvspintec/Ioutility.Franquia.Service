@@ -82,6 +82,15 @@ namespace Pulsati.Core.Domain.Services.Validacao.Command
                 .LessThanOrEqualTo(maximo)
                 .WithMessage(MensagemErroHelper.NumeroMaximo(nomePropriedade, maximo));
         }
+        protected virtual void ValidarIntervaloNumerico(Expression<Func<TEntity, double?>> expressionPropriedade, double maximo, double minimo = 0, string nomePropriedade = "")
+        {
+            nomePropriedade = _obterNomePropriedadeParaValidacao(expressionPropriedade, nomePropriedade);
+            RuleFor(expressionPropriedade)
+                .GreaterThanOrEqualTo(minimo)
+                .WithMessage(MensagemErroHelper.NumeroMinimo(nomePropriedade, minimo))
+                .LessThanOrEqualTo(maximo)
+                .WithMessage(MensagemErroHelper.NumeroMaximo(nomePropriedade, maximo));
+        }
         protected string _obterNomePropriedadeParaValidacao<TPropertyReturn>(Expression<Func<TEntity, TPropertyReturn>> expressionPropriedade, string propriedade)
         {
             if (string.IsNullOrEmpty(propriedade))

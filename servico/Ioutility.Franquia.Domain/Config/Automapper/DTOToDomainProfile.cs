@@ -2,6 +2,8 @@
 using Ioutility.Franquias.Domain.Franquias.DTOs;
 using Ioutility.Franquias.Domain.Franquias.DTOs.Gerais;
 using Ioutility.Franquias.Domain.Franquias.Models;
+using Ioutility.Franquias.Domain.Procedimentos.DTOs;
+using Ioutility.Franquias.Domain.Procedimentos.Models;
 using Pulsati.Core.Domain.DTOs.ValueObjects;
 using Pulsati.Core.Domain.ValueObjects.Enderecos;
 
@@ -23,6 +25,21 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
                 enderecoDTO.Arquivos
                 ));
 
+            CreateMap<FranquiaDTO, Franquia>().ConstructUsing((dto, context)
+                => new Franquia(dto.Id, dto.Nome, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<FranquiaDadoBancario>(dto.DadoBancario)));
+
+
+            CreateMap<TipoProcedimentoDTO, TipoProcedimento>().
+                ConstructUsing(dto => new TipoProcedimento(dto.Id, dto.Nome));
+            CreateMap<ProcedimentoDTO, Procedimento>().
+                ConstructUsing(dto => new Procedimento(
+                    dto.Id, 
+                    dto.Especialidade, 
+                    dto.TipoProcedimentoId,
+                    new ProcedimentoValorVO(dto.ValorSugerido, dto.ValorMinimo, dto.ValorMaximo, dto.ValorCustoAdicional),
+                    new ProcedimentoComissaoVO(dto.ComissaoTipo, dto.ComissaoValor)
+                    )
+                );
             CreateMap<DadosBancariosVODTO, FranquiaDadoBancario>().ConstructUsing((dto, context) =>
                  new FranquiaDadoBancario(dto.BancoId, dto.Agencia, dto.Conta, dto.TipoChavePix, dto.ChavePix));
 

@@ -90,6 +90,81 @@ namespace Ioutility.Franquias.Repository.Migrations
                     b.ToTable("Franquia", (string)null);
                 });
 
+            modelBuilder.Entity("Ioutility.Franquias.Domain.Procedimentos.Models.Procedimento", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<string>("CodigoVirtual")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataInativacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Especialidade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TipoProcedimentoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoProcedimentoId");
+
+                    b.ToTable("Procedimento", (string)null);
+                });
+
+            modelBuilder.Entity("Ioutility.Franquias.Domain.Procedimentos.Models.TipoProcedimento", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Ativo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DataInativacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NomeQuery")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NomeSemPreposicaoQuery")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoProcedimento", (string)null);
+                });
+
             modelBuilder.Entity("Pulsati.Core.Domain.EventSources.EventSource", b =>
                 {
                     b.Property<Guid>("Id")
@@ -244,6 +319,72 @@ namespace Ioutility.Franquias.Repository.Migrations
 
                     b.Navigation("Endereco")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Ioutility.Franquias.Domain.Procedimentos.Models.Procedimento", b =>
+                {
+                    b.HasOne("Ioutility.Franquias.Domain.Procedimentos.Models.TipoProcedimento", "TipoProcedimento")
+                        .WithMany("Procedimentos")
+                        .HasForeignKey("TipoProcedimentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.OwnsOne("Ioutility.Franquias.Domain.Procedimentos.Models.ProcedimentoComissaoVO", "Comissao", b1 =>
+                        {
+                            b1.Property<Guid>("ProcedimentoId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("Tipo")
+                                .HasColumnType("int");
+
+                            b1.Property<double>("Valor")
+                                .HasColumnType("float");
+
+                            b1.HasKey("ProcedimentoId");
+
+                            b1.ToTable("Procedimento");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProcedimentoId");
+                        });
+
+                    b.OwnsOne("Ioutility.Franquias.Domain.Procedimentos.Models.ProcedimentoValorVO", "Valor", b1 =>
+                        {
+                            b1.Property<Guid>("ProcedimentoId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<double>("CustoAdicional")
+                                .HasColumnType("float");
+
+                            b1.Property<double>("Maximo")
+                                .HasColumnType("float");
+
+                            b1.Property<double>("Minimo")
+                                .HasColumnType("float");
+
+                            b1.Property<double>("Sugerido")
+                                .HasColumnType("float");
+
+                            b1.HasKey("ProcedimentoId");
+
+                            b1.ToTable("Procedimento");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ProcedimentoId");
+                        });
+
+                    b.Navigation("Comissao")
+                        .IsRequired();
+
+                    b.Navigation("TipoProcedimento");
+
+                    b.Navigation("Valor")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Ioutility.Franquias.Domain.Procedimentos.Models.TipoProcedimento", b =>
+                {
+                    b.Navigation("Procedimentos");
                 });
 #pragma warning restore 612, 618
         }

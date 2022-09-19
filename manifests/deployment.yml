@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: ioutility-franquia-service 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ioutility-franquia-service
+  template:
+    metadata:
+      labels:
+        app: ioutility-franquia-service 
+    spec:
+      containers:
+        - name: ioutilityfranquiaservice 
+          image: ioutilityimages.azurecr.io/ioutilityfranquiaservice
+          ports:
+          - containerPort: 80

@@ -67,15 +67,22 @@
             return msg;
         }
 
-        public static string NumeroMinimo(string propriedade, int numeroMinimo)
+        public static string NumeroMinimo(string propriedade, double numeroMinimo)
         {
             var msg = $"{propriedade} deve ser maior que {numeroMinimo}";
 
             return msg;
         }
-        public static string NumeroMaximo(string propriedade, int numeroMaximo)
+
+        public static string NumeroMaximo(string propriedade, double numeroMaximo)
         {
             var msg = $"{propriedade} deve ser menor que {numeroMaximo}";
+            return msg;
+        }
+
+        public static string IntervaloNumerico(string propriedade, double minimo, double maximo)
+        {
+            var msg = $"{propriedade} deve estar entre {minimo} e {maximo}";
 
             return msg;
         }
