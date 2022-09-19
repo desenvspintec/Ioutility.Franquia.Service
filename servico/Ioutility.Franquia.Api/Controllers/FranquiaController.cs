@@ -20,6 +20,7 @@ namespace Ioutility.Franquias.Api.Controllers
     public class FranquiaController : EntityBasicController<Franquia, FranquiaListagemDTO, FranquiaDTO, FranquiaDTO, FranquiaDTO>
     {
         public readonly IBancoRepository _bancoRepository;
+        public readonly IFranquiaRepository _repository;
         public FranquiaController(FranquiaCommandHandler commandHandler
             , IFranquiaRepository repositoryReadonly
             , IMapper mapper
@@ -34,6 +35,7 @@ namespace Ioutility.Franquias.Api.Controllers
                 , exigeAutenticacao)
         {
             _bancoRepository = bancoRepository;
+            _repository = repositoryReadonly;
         }
 
         protected override string GetClaimTipoParaContrutor() => ClaimTipo.PACIENTE; //revisar com Cassiano
@@ -41,14 +43,14 @@ namespace Ioutility.Franquias.Api.Controllers
         protected override FranquiaDTO ConverterEntidadeDominioParaViewModel(Franquia entity)
         {
             var viewModel = base.ConverterEntidadeDominioParaViewModel(entity);
-            viewModel.DadosBancarios.BancoNome = _bancoRepository.BuscarPorId(entity.DadosBancarios.BancoId).LabelValue;
+            viewModel.DadosBancarios.BancoNome = _bancoRepository.BuscarPorId(entity.DadosBancarios.BancoId)!.LabelValue;
             return viewModel;
         }
 
         [HttpGet("avancado")]
         public async Task<IActionResult> BuscarAvancado([FromQuery] FranquiaBuscarAvancadoViewModel query)
         {
-            var fornecedores = await (RepositoryReadonly as IFranquiaRepository).BuscarAvancado(query);
+            var fornecedores = await _repository.BuscarAvancado(query);
             return Response(fornecedores);
         }
        
