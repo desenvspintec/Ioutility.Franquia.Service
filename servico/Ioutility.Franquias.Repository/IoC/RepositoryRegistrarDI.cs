@@ -2,6 +2,7 @@
 using Ioutility.Franquias.Domain.Franquias.Models;
 using Ioutility.Franquias.Repository.DbContexts;
 using Ioutility.Franquias.Repository.Franquias.Repositorys;
+using Ioutility.Franquias.Repository.JsonRepositorys.Bancos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +17,9 @@ namespace Ioutility.Franquias.Repository.IoC
             services.AddDbContext<DbContext, FranquiaDb>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IFranquiaRepository, FranquiaRepository>();
+            services.AddScoped<IBancoRepository, BancoRepository>();
             services.AddScoped<IEntityQueryRepository<Franquia>, FranquiaRepository>();
+
             return services;
         }
     }

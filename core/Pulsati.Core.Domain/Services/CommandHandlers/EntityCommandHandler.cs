@@ -58,6 +58,16 @@ namespace Pulsati.Core.Domain.Services.CommandHandlers
             command.Id = Guid.NewGuid();
             CommandHandlerHelper.DefinirDadosDoCommandAntesDoMapParaDomainAoRegistrar(command);
 
+            try
+            {
+                var entityteste = CommandHandlerHelper.MapearCommandParaDomain(command, ETipoOperacaoCrud.Registrar);
+
+            }
+            catch (Exception e)
+            {
+
+            }
+
             var entity = CommandHandlerHelper.MapearCommandParaDomain(command, ETipoOperacaoCrud.Registrar);
             var resultadoValidacao = await ValidadorService.ValidarAsync(entity);
             if (!resultadoValidacao.EstaValido) return;

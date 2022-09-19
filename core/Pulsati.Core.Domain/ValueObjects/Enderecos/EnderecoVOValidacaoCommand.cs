@@ -16,7 +16,7 @@ namespace Pulsati.Core.Domain.ValueObjects.Enderecos
             ValidarCampoTextoBasico(end => end.Bairro, "", true);
             ValidarCampoTextoBasico(end => end.Estado, "", true);
             ValidarCampoTextoBasico(end => end.Uf, "", true);
-            ValidarIntervaloNumerico(end => end.Numero, EnderecoConstante.NUMERO_RESIDENCIA_MAXIMO, 1, "Número");
+            ValidarIntervaloNumerico(end => end.Numero, EnderecoConstante.NUMERO_RESIDENCIA_MAXIMO, 1, "Numero");
             ValidarCampoTamanhoMaximo(end => end.Complemento);
         }
     }

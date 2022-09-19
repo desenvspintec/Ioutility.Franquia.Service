@@ -7,10 +7,10 @@
             return valor switch
             {
                 ETipoDocumentoRegistroFederal.CertidaoNascimento => "Certidão de nascimento",
-                ETipoDocumentoRegistroFederal.CPF => "CPF",
+                ETipoDocumentoRegistroFederal.Cpf => "CPF",
                 ETipoDocumentoRegistroFederal.Cnpj => "CNPJ",
                 ETipoDocumentoRegistroFederal.Sei => "SEI",
-                ETipoDocumentoRegistroFederal.CRO => "CRO",
+                ETipoDocumentoRegistroFederal.Cro => "CRO",
                 _ => "Documento indefinido",
             };
         }

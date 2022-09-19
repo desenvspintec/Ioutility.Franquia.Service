@@ -1,0 +1,4 @@
+﻿Para poder utilizar com sucesso os JSONs repositorios
+os arquivos JSON contendo o conteudo que será consultado
+deverá estar dentro da pasta wwwroot/jsons do projeto marcado como projeto de
+inicialização (geralemente a API)

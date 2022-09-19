@@ -33,7 +33,7 @@ namespace Pulsati.Core.Domain.ValueObjects
             {
                 string propriedade = Tipo switch
                 {
-                    ETipoDocumentoRegistroFederal.CPF => "CPF",
+                    ETipoDocumentoRegistroFederal.Cpf => "CPF",
                     ETipoDocumentoRegistroFederal.Cnpj => "CNPJ",
                     ETipoDocumentoRegistroFederal.Sei => "CEI",
                     _ => "Erro ao cadastrar propriedade numero de documento",

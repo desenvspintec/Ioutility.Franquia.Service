@@ -169,8 +169,6 @@ namespace Pulsati.Core.Domain.Services.Validacao.Command
                     {
                         case Enums.ETipoDocumentoRegistroFederal.CertidaoNascimento:
                             return true;
-                        case Enums.ETipoDocumentoRegistroFederal.CPF:
-                            return ValidacaoHelper.Cpf(documento.Numero);
                         case Enums.ETipoDocumentoRegistroFederal.Cnpj:
                             return ValidacaoHelper.Cnpj(documento.Numero);
                         case Enums.ETipoDocumentoRegistroFederal.Sei:

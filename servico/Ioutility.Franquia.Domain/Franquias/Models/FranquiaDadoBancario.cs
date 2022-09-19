@@ -32,5 +32,19 @@ namespace Ioutility.Franquias.Domain.Franquias.Models
         {
             return new List<IValidadorDomainCommand<FranquiaDadoBancario>>();
         }
+        public static string ObterTipoChavePixTxt(ETipoChavePix tipoChavePix)
+        {
+            switch (tipoChavePix)
+            {
+                case ETipoChavePix.Cpf:
+                    return "CPF";
+                case ETipoChavePix.Cnpj:
+                    return "CNPJ";
+                case ETipoChavePix.Telefone:
+                    return "Telefone";
+                default:
+                    return $"Tipo de chave {tipoChavePix} não definido";
+            }
+        }
     }
 }

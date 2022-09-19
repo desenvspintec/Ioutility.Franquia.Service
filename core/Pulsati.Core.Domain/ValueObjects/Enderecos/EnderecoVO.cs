@@ -1,6 +1,5 @@
 ﻿using Pulsati.Core.Domain.DTOs;
 using Pulsati.Core.Domain.DTOs.ValueObjects;
-using Pulsati.Core.Domain.Helpers;
 using Pulsati.Core.Domain.Helpers.Extensions;
 using Pulsati.Core.Domain.Interfaces.Entitys;
 using Pulsati.Core.Domain.Interfaces.Validacoes;
@@ -13,11 +12,11 @@ namespace Pulsati.Core.Domain.ValueObjects.Enderecos
         protected EnderecoVO()
         {
         }
-        public EnderecoVO(string complemento, int? numero, string logradouro, string bairro, string cidade, string estado, string uf, string cep, string? arquivos)
+        public EnderecoVO(string? complemento, int? numero, string rua, string bairro, string cidade, string estado, string uf, string cep, string? arquivos)
         {
             Complemento = complemento;
             Numero = numero;
-            Logradouro = logradouro;
+            Logradouro = rua;
             Bairro = bairro;
             Cidade = cidade;
             Estado = estado;
@@ -37,10 +36,9 @@ namespace Pulsati.Core.Domain.ValueObjects.Enderecos
             Uf = enderecoDto.Uf;
             Cep = enderecoDto.Cep;
             Arquivos = enderecoDto.Arquivos ?? "";
-        }
+        } 
 
-
-        public string Complemento { get; private set; }
+        public string? Complemento { get; private set; }
         public int? Numero { get; private set; }
         public string Logradouro { get; private set; }
         public string Bairro { get; private set; }

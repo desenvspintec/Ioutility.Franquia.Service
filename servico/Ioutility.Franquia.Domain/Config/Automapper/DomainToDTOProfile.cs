@@ -11,7 +11,7 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
         public DomainToDTOProfile()
         {
             CreateMap<EnderecoVO, EnderecoVODTO>();
-            CreateMap<FranquiaDadoBancario, DadoBancarioDTO>();
+            CreateMap<FranquiaDadoBancario, FranquiaDadoBancario>();
             CreateMap<Franquia, FranquiaDTO>();
         }
     }

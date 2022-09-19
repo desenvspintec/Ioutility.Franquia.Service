@@ -3,10 +3,10 @@
     public enum ETipoDocumentoRegistroFederal
     {
         CertidaoNascimento,
-        CPF,
+        Cpf,
         Cnpj,
         Sei,
-        CRO,
-        PIS,
+        Cro,
+        Pis,
     }
 }

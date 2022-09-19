@@ -18,7 +18,7 @@ namespace Ioutility.Franquias.Api.Services
                 new DisplayName(nameof(IEntityBasic.Nome), "Nome"),
 
                 new DisplayName(nameof(Franquia.Endereco), "Endereço"),
-                new DisplayName(nameof(Franquia.DadoBancario), "Dados Bancarios"),
+                new DisplayName(nameof(Franquia.DadosBancarios), "Dados Bancarios"),
 
                 new DisplayName(nameof(FranquiaDadoBancario.BancoId), "Banco"),
                 new DisplayName(nameof(FranquiaDadoBancario.Agencia), "Agencia"),
