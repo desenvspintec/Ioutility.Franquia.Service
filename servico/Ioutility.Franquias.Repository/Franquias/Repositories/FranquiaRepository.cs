@@ -2,12 +2,9 @@
 using Pulsati.Core.Domain.Helpers;
 using Pulsati.Core.Domain.Helpers.Extensions;
 using Pulsati.Core.Domain.Interfaces.DTOs;
-using Pulsati.Core.Repository.Repositorys;
 using Ioutility.Franquias.Domain.Franquias.DTOs;
-using Ioutility.Franquias.Domain.Franquias.Enums;
 using Ioutility.Franquias.Domain.Franquias.Interfaces;
 using Ioutility.Franquias.Domain.Franquias.Models;
-using Microsoft.EntityFrameworkCore;
 using Pulsati.Core.Repository.Repositories;
 using Ioutility.Franquias.Domain.Franquias.ViewModels;
 

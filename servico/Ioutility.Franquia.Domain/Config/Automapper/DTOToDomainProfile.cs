@@ -26,7 +26,7 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
                 ));
 
             CreateMap<FranquiaDTO, Franquia>().ConstructUsing((dto, context)
-                => new Franquia(dto.Id, dto.Nome, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<FranquiaDadoBancario>(dto.DadoBancario)));
+                => new Franquia(dto.Id, dto.Nome,dto.RazaoSocial,dto.Matricula,dto.Cnpj,dto.ResponsavelLegal,dto.Email,dto.Telefone,dto.CelularWhatsApp, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<FranquiaDadoBancario>(dto.DadosBancarios), context.Mapper.Map<FranquiaAcessoVO>(dto.FranquiaAcesso)));
 
 
             CreateMap<TipoProcedimentoDTO, TipoProcedimento>().

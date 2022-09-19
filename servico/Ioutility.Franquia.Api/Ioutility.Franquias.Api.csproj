@@ -11,7 +11,7 @@
 	<ItemGroup>
 	  <Content Remove="wwwroot\jsons\BancosDb.json" />
 	</ItemGroup>
-
+	<ItemGroup>
 	    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
 		  <PrivateAssets>all</PrivateAssets>
@@ -21,7 +21,6 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\..\core\Pulsati.Core.Api\Pulsati.Core.Api.csproj" />
 		<ProjectReference Include="..\Ioutility.Franquia.DI\Ioutility.Franquias.DI.csproj" />

@@ -4,7 +4,7 @@ using Ioutility.Franquias.Domain.Procedimentos.Interfaces;
 using Ioutility.Franquias.Domain.Procedimentos.Models;
 using Ioutility.Franquias.Repository.DbContexts;
 using Ioutility.Franquias.Repository.Procedimentos.Repositories;
-using Ioutility.Franquias.Repository.Franquias.Repositorys;
+using Ioutility.Franquias.Repository.Franquias.Repositories;
 using Ioutility.Franquias.Repository.JsonRepositorys.Bancos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
