@@ -1,4 +1,5 @@
 ﻿using Pulsati.Core.Domain.Helpers;
+using Pulsati.Core.Domain.Singletons.Ambiente;
 
 namespace Pulsati.Core.Domain.Constantes
 {
@@ -25,9 +26,14 @@ namespace Pulsati.Core.Domain.Constantes
 
         public const string ERRO_AO_VALIDAR_NA_ENTIDADE_DE_DOMINIO = "Erro de entidade de dominio";
 
-        public const string CAMINHO_PADRAO = "/wwwroot/" + PASTA_TEMPORARIA;
-        public static string STORAGE_SERVICE_ARQUIVOS_STATICOS = "https://localhost:7041/" + ArquivoHelper.ObterDiretorioArquivosStaticos();
-        public const string STORAGE_SERVICE = "https://localhost:7041/";
-        public const string STORAGE_SERVICE_API = STORAGE_SERVICE + "api/Storage/";
+        public const string PADRAO_PASTA_ARQUIVOS_STATICOS = "wwwroot/";
+        public const string CAMINHO_PADRAO = PADRAO_PASTA_ARQUIVOS_STATICOS + PASTA_TEMPORARIA;
+        public const string LOCALHOST = "localhost";
+        public const string ENDERECO_DOCKER_ACESSA_LOCALHOST = "host.docker.internal";
+        public static string STORAGE_SERVICE = $"http://{VariavelDeAmbiente.ObterInstanciaInicializada().EnderecoApiGateway}/storage/";
+        public static string RELATORIO_SERVICE = $"http://{VariavelDeAmbiente.ObterInstanciaInicializada().EnderecoApiGateway}/relatorio/";
+        public static string RELATORIO_SERVICE_PASTA_RESULTADO = $"http://{VariavelDeAmbiente.ObterInstanciaInicializada().EnderecoApiGateway}/relatorio/" + PASTA_TEMPORARIA;
+        public static string STORAGE_SERVICE_ARQUIVOS_STATICOS = STORAGE_SERVICE + ArquivoHelper.ObterDiretorioArquivosStaticos();
+        public static string STORAGE_SERVICE_API = STORAGE_SERVICE + "api/Storage/";
     }
 }

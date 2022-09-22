@@ -5,6 +5,7 @@ using Pulsati.Core.Domain.Constantes;
 using Pulsati.Core.Domain.DTOs;
 using Pulsati.Core.Domain.Helpers;
 using Pulsati.Core.Domain.Helpers.Extensions;
+using Pulsati.Core.Domain.Singletons.Ambiente;
 using System.Text;
 
 namespace Pulsati.Core.Domain.Services.TransferirArquivos
@@ -16,7 +17,7 @@ namespace Pulsati.Core.Domain.Services.TransferirArquivos
         private readonly IBus _bus;
         public StorageService()
         {
-            _bus = RabbitHutch.CreateBus("host=localhost");
+            _bus = RabbitHutch.CreateBus("host=" + VariavelDeAmbiente.ObterInstanciaInicializada().EnderecoRabbitMq);
         }
 
 

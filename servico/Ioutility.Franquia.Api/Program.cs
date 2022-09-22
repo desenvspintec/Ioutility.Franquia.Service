@@ -1,11 +1,13 @@
 using Ioutility.Franquias.Api.Config.IoC;
 using Microsoft.EntityFrameworkCore;
+using Pulsati.Core.Domain.Singletons.Ambiente;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+VariavelDeAmbiente.InicializarSingleton(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddFranquiaFullServices(builder.Configuration);
