@@ -3,8 +3,10 @@ using Pulsati.Core.Domain.Enums.EnumText;
 
 
 namespace Ioutility.Franquias.Domain.Franquias.DTOs {
-    public class FranquiaBusinessPayVODTO
+    public class BusinessPayVODTO
     {
-        public FranquiaBusinessPayVODTO? FranquiaBusinessPay { get; set; }
+        public string NrVendasMes { get; set; }
+        public string ConfiguracaoCartao { get; set; }
+
     }
 }

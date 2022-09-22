@@ -41,7 +41,7 @@ namespace Ioutility.Franquias.Api.Controllers
         protected override FranquiaDTO ConverterEntidadeDominioParaViewModel(Franquia entity)
         {
             var viewModel = base.ConverterEntidadeDominioParaViewModel(entity);
-            viewModel.DadosBancarios.BancoNome = _bancoRepository.BuscarPorId(entity.DadosBancarios.BancoId).LabelValue;
+            viewModel.DadosBancarios.BancoId = _bancoRepository.BuscarPorId(entity.DadosBancarios.BancoId).Value;
             return viewModel;
         }
 

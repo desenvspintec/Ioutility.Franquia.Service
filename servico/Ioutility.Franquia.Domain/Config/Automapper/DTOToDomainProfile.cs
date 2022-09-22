@@ -26,7 +26,7 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
                 ));
 
             CreateMap<FranquiaDTO, Franquia>().ConstructUsing((dto, context)
-                => new Franquia(dto.Id, dto.Nome,dto.RazaoSocial,dto.Matricula,dto.Cnpj,dto.ResponsavelLegal,dto.Email,dto.Telefone,dto.CelularWhatsApp, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<FranquiaDadoBancario>(dto.DadosBancarios), context.Mapper.Map<FranquiaAcessoVO>(dto.FranquiaAcesso)));
+                => new Franquia(dto.Id, dto.ImagemFranquia, dto.Nome,dto.Cnpj,dto.ResponsavelLegal,dto.Email,dto.Telefone,dto.CelularWhatsApp, context.Mapper.Map<EnderecoVO>(dto.Endereco), context.Mapper.Map<DadoBancarioVO>(dto.DadosBancarios), context.Mapper.Map<BusinessPayVO>(dto.BusinessPay), context.Mapper.Map<FranquiaAcessoVO>(dto.FranquiaAcesso)));
 
 
             CreateMap<TipoProcedimentoDTO, TipoProcedimento>().
@@ -40,18 +40,21 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
                     new ProcedimentoComissaoVO(dto.ComissaoTipo, dto.ComissaoValor)
                     )
                 );
-            CreateMap<DadosBancariosVODTO, FranquiaDadoBancario>().ConstructUsing((dto, context) =>
-                 new FranquiaDadoBancario(dto.BancoId, dto.Agencia, dto.Conta, dto.TipoChavePix, dto.ChavePix));
+            CreateMap<DadosBancariosVODTO, DadoBancarioVO>().ConstructUsing((dto, context) =>
+                 new DadoBancarioVO(dto.BancoId, dto.Agencia, dto.Conta, dto.TipoChavePix, dto.TipoChavePixTxt, dto.ChavePix));
 
             CreateMap<FranquiaAcessoVODTO, FranquiaAcessoVO>().ConstructUsing((dto, context) =>
                 new FranquiaAcessoVO(dto.FranquiaStatus));
 
+            CreateMap<BusinessPayVODTO, BusinessPayVO>().ConstructUsing((dto, context) =>
+              new BusinessPayVO(dto.NrVendasMes,dto.ConfiguracaoCartao));
+
             CreateMap<FranquiaDTO, Franquia>().ConstructUsing((dto, context) =>
-                 new Franquia(dto.Id, dto.Nome, dto.RazaoSocial, dto.Matricula, dto.Cnpj, dto.ResponsavelLegal,
+                 new Franquia(dto.Id, dto.ImagemFranquia, dto.Nome, dto.Cnpj, dto.ResponsavelLegal,
                  dto.Email, dto.Telefone, dto.CelularWhatsApp,
                  context.Mapper.Map<EnderecoVO>(dto.Endereco),
-                 context.Mapper.Map<FranquiaDadoBancario>(dto.DadosBancarios),
-                 //context.Mapper.Map<FranquiaBusinessPay>(dto.FranquiaBusinessPay),
+                 context.Mapper.Map<DadoBancarioVO>(dto.DadosBancarios),
+                 context.Mapper.Map<BusinessPayVO>(dto.BusinessPay),
                  context.Mapper.Map<FranquiaAcessoVO>(dto.FranquiaAcesso)
                  ));
         }

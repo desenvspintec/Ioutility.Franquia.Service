@@ -4,7 +4,9 @@ using Ioutility.Franquias.Domain.Franquias.Models;
 
 namespace Ioutility.Franquias.Domain.Franquias.DTOs {
     public class FranquiaListagemDTO : EntityBasicDTO {
-        public string RazaoSocial { get; set; }
+        public string? ImagemFranquia { get; set; }
+        public string CodFranquia { get; set; } 
+        public string Nome { get; set; }
         public string Cnpj { get; set; }
         public string CnpjTxt { get => Convert.ToUInt64(Cnpj).ToString(@"00\.000\.000\/0000\-00"); }
         public string Email { get; set; }

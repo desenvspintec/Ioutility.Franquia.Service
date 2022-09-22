@@ -4,6 +4,7 @@ using Ioutility.Franquias.Repository.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ioutility.Franquias.Repository.Migrations
 {
     [DbContext(typeof(FranquiaDb))]
-    partial class FranquiaDbModelSnapshot : ModelSnapshot
+    [Migration("20220921105441_FranquiaCamposDadosBancariosTipoChavePix")]
+    partial class FranquiaCamposDadosBancariosTipoChavePix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,11 +45,6 @@ namespace Ioutility.Franquias.Repository.Migrations
                         .HasMaxLength(18)
                         .HasColumnType("nvarchar(18)");
 
-                    b.Property<string>("CodigoVirtual")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
@@ -58,7 +55,7 @@ namespace Ioutility.Franquias.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImagemFranquia")
+                    b.Property<string>("Matricula")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -208,15 +205,30 @@ namespace Ioutility.Franquias.Repository.Migrations
 
             modelBuilder.Entity("Ioutility.Franquias.Domain.Franquias.Models.Franquia", b =>
                 {
-                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.BusinessPayVO", "BusinessPay", b1 =>
+                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.FranquiaAcessoVO", "Acesso", b1 =>
+                        {
+                            b1.Property<Guid>("FranquiaId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<int>("FranquiaStatus")
+                                .HasColumnType("int");
+
+                            b1.HasKey("FranquiaId");
+
+                            b1.ToTable("Franquia");
+
+                            b1.WithOwner()
+                                .HasForeignKey("FranquiaId");
+                        });
+
+                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.FranquiaBusinessPayVO", "BusinessPay", b1 =>
                         {
                             b1.Property<Guid>("FranquiaId")
                                 .HasColumnType("uniqueidentifier");
 
                             b1.Property<string>("ConfiguracaoCartao")
                                 .IsRequired()
-                                .HasMaxLength(100)
-                                .HasColumnType("nvarchar(100)");
+                                .HasColumnType("nvarchar(max)");
 
                             b1.Property<string>("NrVendasMes")
                                 .IsRequired()
@@ -231,7 +243,7 @@ namespace Ioutility.Franquias.Repository.Migrations
                                 .HasForeignKey("FranquiaId");
                         });
 
-                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.DadoBancarioVO", "DadosBancarios", b1 =>
+                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.FranquiaDadoBancarioVO", "DadosBancarios", b1 =>
                         {
                             b1.Property<Guid>("FranquiaId")
                                 .HasColumnType("uniqueidentifier");
@@ -245,6 +257,10 @@ namespace Ioutility.Franquias.Repository.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
+                            b1.Property<string>("BancoNome")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
                             b1.Property<string>("ChavePix")
                                 .IsRequired()
                                 .HasMaxLength(100)
@@ -255,28 +271,15 @@ namespace Ioutility.Franquias.Repository.Migrations
                                 .HasMaxLength(100)
                                 .HasColumnType("nvarchar(100)");
 
+                            b1.Property<double>("SalarioMensal")
+                                .HasColumnType("float");
+
                             b1.Property<int>("TipoChavePix")
                                 .HasColumnType("int");
 
                             b1.Property<string>("TipoChavePixTxt")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("FranquiaId");
-
-                            b1.ToTable("Franquia");
-
-                            b1.WithOwner()
-                                .HasForeignKey("FranquiaId");
-                        });
-
-                    b.OwnsOne("Ioutility.Franquias.Domain.Franquias.Models.FranquiaAcessoVO", "Acesso", b1 =>
-                        {
-                            b1.Property<Guid>("FranquiaId")
-                                .HasColumnType("uniqueidentifier");
-
-                            b1.Property<int>("FranquiaStatus")
-                                .HasColumnType("int");
 
                             b1.HasKey("FranquiaId");
 

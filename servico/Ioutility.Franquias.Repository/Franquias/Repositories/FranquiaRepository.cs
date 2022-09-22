@@ -7,6 +7,8 @@ using Ioutility.Franquias.Domain.Franquias.Interfaces;
 using Ioutility.Franquias.Domain.Franquias.Models;
 using Pulsati.Core.Repository.Repositories;
 using Ioutility.Franquias.Domain.Franquias.ViewModels;
+using Ioutility.Franquias.Domain.Procedimentos.DTOs;
+using Ioutility.Franquias.Domain.Procedimentos.Models;
 
 namespace Ioutility.Franquias.Repository.Franquias.Repositories
 {
@@ -23,25 +25,33 @@ namespace Ioutility.Franquias.Repository.Franquias.Repositories
             {
                 Id = query.Id,
                 Cnpj = query.Cnpj,
-                // Email = query.Email.Valor,
-                // RazaoSocial = query.RazaoSocial.Valor,
+                Email = query.Email,
                 Nome = query.Nome,
                 Telefone = query.Telefone,
-                FranquiaStatus = query.Acesso.FranquiaStatus
+                FranquiaStatus = query.Acesso.FranquiaStatus,
+                CodFranquia = query.CodigoVirtual,
+                ImagemFranquia = query.CaminhoImagem
             });
         }
         public async Task<IEnumerable<FranquiaListagemDTO>> BuscarAvancado(FranquiaBuscarAvancadoViewModel queryModel)
         {
             string palavraChave = queryModel.Nome!.FormatarParaBusca();
             var query = BuscarTodosQuery();
-            query = query.Where(fornecedor
-                => fornecedor.NomeQuery.Contains(palavraChave)
-                || fornecedor.Cnpj.Contains(palavraChave)
+            query = query.Where(franquia
+                => franquia.NomeQuery.Contains(palavraChave)
+                || franquia.Cnpj.Contains(palavraChave)
                 //|| fornecedor.Email.ValorQuery.Contains(palavraChave)
                 //|| fornecedor.RazaoSocial.ValorQuery.Contains(palavraChave)
 
             );
             query = AddFiltroPorStatus(queryModel, query);
+
+
+            if (queryModel.Chave!.EstaPreenchido())
+            {
+                var codigoQuery = queryModel.Chave!.FormatarParaBusca();
+                query = query.Where(franquia => franquia.CodigoVirtual.Contains(codigoQuery));
+            }
 
             var queryOtimizada = OtimizarQueryBuscarTodosOverrider(query);
             return (await queryOtimizada.ToListAsync()).Cast<FranquiaListagemDTO>();

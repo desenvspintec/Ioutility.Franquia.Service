@@ -8,8 +8,9 @@ namespace Ioutility.Franquias.Domain.Franquias.DTOs
 {
     public class FranquiaDTO : EntityBasicDTO
     {
-        public string RazaoSocial { get; set; }
-        public string Matricula { get; set; }
+        public string? CodFranquia { get; set; }
+        public string? ImagemFranquia { get; set; }
+        public string Nome { get; set; }
         public string Cnpj { get; set; }
         public string ResponsavelLegal { get; set; }
         public string Email { get; set; }
@@ -17,7 +18,7 @@ namespace Ioutility.Franquias.Domain.Franquias.DTOs
         public string CelularWhatsApp { get; set; }
         public EnderecoVODTO Endereco { get; set; }
         public DadosBancariosVODTO DadosBancarios { get; set; }
-        // public FranquiaBusinessPayVODTO? FranquiaBusinessPay { get; set; }
+        public BusinessPayVODTO? BusinessPay { get; set; }
         public FranquiaAcessoVODTO? FranquiaAcesso { get; set; }
     }
 }

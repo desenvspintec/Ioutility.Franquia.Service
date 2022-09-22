@@ -29,6 +29,13 @@ namespace Ioutility.Franquias.Repository.Franquias.Maps
 
             builder.OwnsOne(franquia => franquia.Endereco, EnderecoVOMap.EnderecoMap<Franquia>());
 
+            builder.OwnsOne(franquia => franquia.BusinessPay, franquiaBusinessPayBuilder => {
+                franquiaBusinessPayBuilder.Property(businessPay => businessPay.NrVendasMes).HasMaxLength(MaxLengthPadrao);
+                franquiaBusinessPayBuilder.Property(businessPay => businessPay.ConfiguracaoCartao).HasMaxLength(MaxLengthPadrao);
+            });
+
+            builder.Property(franquia => franquia.CodigoVirtual).HasMaxLength(MAX_LENGTH_PADRAO_DB);
+
             base.Configure(builder);
         }
     }

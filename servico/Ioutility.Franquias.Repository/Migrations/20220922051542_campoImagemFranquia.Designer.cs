@@ -4,6 +4,7 @@ using Ioutility.Franquias.Repository.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ioutility.Franquias.Repository.Migrations
 {
     [DbContext(typeof(FranquiaDb))]
-    partial class FranquiaDbModelSnapshot : ModelSnapshot
+    [Migration("20220922051542_campoImagemFranquia")]
+    partial class campoImagemFranquia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

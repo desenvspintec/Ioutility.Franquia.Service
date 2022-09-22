@@ -12,7 +12,7 @@ using Ioutility.Franquias.Domain.Franquias.Interfaces;
 
 namespace Ioutility.Franquias.Domain.Franquias.Services
 {
-    public class FranquiaCommandHandler : EntityCommandHandler<Franquia, FranquiaDTO, FranquiaDTO>
+    public class FranquiaCommandHandler : EntityComArquivoCommandHandler<Franquia, FranquiaDTO, FranquiaDTO>
     {
         public FranquiaCommandHandler(DomainNotification domainNotification, IFranquiaRepository repository, IMapper mapper, EntityValidacaoService<Franquia> validadorService, EventStoreService eventStoreService) : base(domainNotification, repository, mapper, validadorService, eventStoreService)
         {

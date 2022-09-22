@@ -11,8 +11,5 @@ namespace Ioutility.Franquias.Domain.Franquias.DTOs
         public ETipoChavePix TipoChavePix { get; set; }
         public string TipoChavePixTxt { get { return ETipoChavePixTxt.Get(TipoChavePix); } }
         public string ChavePix { get; set; }
-        public double SalarioBrutoMensal { get; set; }
-        public string DiasQueAtende { get; set; }
-        public string? BancoNome { get; set; }
     }
 }

@@ -5,12 +5,12 @@ using Pulsati.Core.Domain.Models;
 
 namespace Ioutility.Franquias.Domain.Franquias.Models
 {
-    public class FranquiaBusinessPay : IValueObject<FranquiaBusinessPay>
+    public class BusinessPayVO : IValueObject<BusinessPayVO>
     {
         // EF CORE
-        protected FranquiaBusinessPay()
+        protected BusinessPayVO()
         {}
-        public FranquiaBusinessPay(string nrVendasMes, string configuracaoCartao)
+        public BusinessPayVO(string nrVendasMes, string configuracaoCartao)
         {
             NrVendasMes = nrVendasMes;
             ConfiguracaoCartao = configuracaoCartao;
@@ -21,9 +21,9 @@ namespace Ioutility.Franquias.Domain.Franquias.Models
 
         public string DisplayNameTypeOf() => "Business Pay";
 
-        public IEnumerable<IValidadorDomainCommand<FranquiaBusinessPay>> ObterDomainValidadorCommands()
+        public IEnumerable<IValidadorDomainCommand<BusinessPayVO>> ObterDomainValidadorCommands()
         {
-            return new List<IValidadorDomainCommand<FranquiaBusinessPay>>();
+            return new List<IValidadorDomainCommand<BusinessPayVO>>();
         }
 
     }

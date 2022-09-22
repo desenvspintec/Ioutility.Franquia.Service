@@ -18,7 +18,7 @@ namespace Ioutility.Franquias.Repository.IoC
     {
         public static IServiceCollection AddFranquiaRepository(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DbContext, FranquiaDb>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DbContext, FranquiaDb>(options => options.    UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IFranquiaRepository, FranquiaRepository>();
             services.AddScoped<IBancoRepository, BancoRepository>();

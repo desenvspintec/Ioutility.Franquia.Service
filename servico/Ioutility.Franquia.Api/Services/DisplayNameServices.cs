@@ -1,4 +1,5 @@
-﻿using Ioutility.Franquias.Domain.Franquias.Models;
+﻿using Ioutility.Franquias.Domain.Franquias.DTOs;
+using Ioutility.Franquias.Domain.Franquias.Models;
 using Ioutility.Franquias.Domain.Procedimentos.DTOs;
 using Ioutility.Franquias.Domain.Procedimentos.Models;
 using Pulsati.Core.Domain.DisplayNames;
@@ -17,21 +18,35 @@ namespace Ioutility.Franquias.Api.Services
             return new List<DisplayName>()
             {
                 new DisplayName(nameof(IEntityBasic.Id), "Id"),
-                new DisplayName(nameof(IEntityBasic.Nome), "Nome"),
+                new DisplayName(nameof(IEntityBasic.Nome), "Nome da Unidade"),
+
+                new DisplayName(nameof(Franquia.ImagemFranquia), "Imagem da Franquia"),
+
+                new DisplayName(nameof(FranquiaListagemDTO.CodFranquia), "Matrícula"),
+
+
+                new DisplayName(nameof(Franquia.ResponsavelLegal), "Responsavel Legal"),
 
                 new DisplayName(nameof(Franquia.Endereco), "Endereço"),
                 new DisplayName(nameof(Franquia.DadosBancarios), "Dados Bancarios"),
+                new DisplayName(nameof(Franquia.BusinessPay), "Business Pay"),
 
-                new DisplayName(nameof(FranquiaDadoBancario.BancoId), "Banco"),
-                new DisplayName(nameof(FranquiaDadoBancario.Agencia), "Agencia"),
-                new DisplayName(nameof(FranquiaDadoBancario.Conta), "Conta"),
-                new DisplayName(nameof(FranquiaDadoBancario.ChavePix), "Chave Pix"),
-                new DisplayName(nameof(FranquiaDadoBancario.TipoChavePix), "Tipo de chave pix"),
+                   
+                new DisplayName(nameof(DadoBancarioVO.BancoId), "Banco"),
+                new DisplayName(nameof(DadoBancarioVO.Agencia), "Agencia"),
+                new DisplayName(nameof(DadoBancarioVO.Conta), "Conta"),
+                new DisplayName(nameof(DadoBancarioVO.ChavePix), "Chave Pix"),
+                new DisplayName(nameof(DadoBancarioVO.TipoChavePix), "Tipo de chave pix"),
+
+                new DisplayName(nameof(BusinessPayVO.NrVendasMes), "Número de Vendas Mês"),
+                new DisplayName(nameof(BusinessPayVO.ConfiguracaoCartao), "Configuração de Cartão de Crédito"),
 
                 new DisplayName(nameof(EnderecoVO.Cep), "CEP"),
                 new DisplayName(nameof(EnderecoVO.Bairro), "Bairro"),
                 new DisplayName(nameof(EnderecoVO.Estado), "Estado"),
                 new DisplayName(nameof(EnderecoVO.Numero), "Número"),
+
+
 
                 new DisplayName(nameof(Procedimento.TipoProcedimentoId), "Tipo do procedimento"),
                 new DisplayName(nameof(Procedimento.Especialidade), "Especialidade"),
