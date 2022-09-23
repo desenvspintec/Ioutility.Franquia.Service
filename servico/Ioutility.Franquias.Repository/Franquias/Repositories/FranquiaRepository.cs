@@ -5,10 +5,8 @@ using Pulsati.Core.Domain.Interfaces.DTOs;
 using Ioutility.Franquias.Domain.Franquias.DTOs;
 using Ioutility.Franquias.Domain.Franquias.Interfaces;
 using Ioutility.Franquias.Domain.Franquias.Models;
-using Pulsati.Core.Repository.Repositories;
 using Ioutility.Franquias.Domain.Franquias.ViewModels;
-using Ioutility.Franquias.Domain.Procedimentos.DTOs;
-using Ioutility.Franquias.Domain.Procedimentos.Models;
+using Pulsati.Core.Repository.Repositorys;
 
 namespace Ioutility.Franquias.Repository.Franquias.Repositories
 {

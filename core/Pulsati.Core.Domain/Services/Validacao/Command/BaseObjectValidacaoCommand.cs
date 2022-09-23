@@ -73,15 +73,6 @@ namespace Pulsati.Core.Domain.Services.Validacao.Command
                 .Empty()
                 .WithMessage(MensagemErroHelper.DeveSerNulo(nomePropriedade));
         }
-        protected virtual void ValidarIntervaloNumerico(Expression<Func<TEntity, int?>> expressionPropriedade, int maximo, int minimo = 0, string nomePropriedade = "")
-        {
-            nomePropriedade = _obterNomePropriedadeParaValidacao(expressionPropriedade, nomePropriedade);
-            RuleFor(expressionPropriedade)
-                .GreaterThanOrEqualTo(minimo)
-                .WithMessage(MensagemErroHelper.NumeroMinimo(nomePropriedade, minimo))
-                .LessThanOrEqualTo(maximo)
-                .WithMessage(MensagemErroHelper.NumeroMaximo(nomePropriedade, maximo));
-        }
         protected virtual void ValidarIntervaloNumerico(Expression<Func<TEntity, double?>> expressionPropriedade, double maximo, double minimo = 0, string nomePropriedade = "")
         {
             nomePropriedade = _obterNomePropriedadeParaValidacao(expressionPropriedade, nomePropriedade);
@@ -178,6 +169,8 @@ namespace Pulsati.Core.Domain.Services.Validacao.Command
                     {
                         case Enums.ETipoDocumentoRegistroFederal.CertidaoNascimento:
                             return true;
+                        case Enums.ETipoDocumentoRegistroFederal.Cpf:
+                            return ValidacaoHelper.Cpf(documento.Numero);
                         case Enums.ETipoDocumentoRegistroFederal.Cnpj:
                             return ValidacaoHelper.Cnpj(documento.Numero);
                         case Enums.ETipoDocumentoRegistroFederal.Sei:

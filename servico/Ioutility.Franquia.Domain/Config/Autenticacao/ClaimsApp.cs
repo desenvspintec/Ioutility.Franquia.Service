@@ -8,10 +8,10 @@ namespace Ioutility.Franquias.Domain.Config.Autenticacao
         {
             return new List<ClaimApp>()
             {
-                new ClaimApp(ClaimTipo.DENTISTA, ClaimValor.LER),
-                new ClaimApp(ClaimTipo.DENTISTA, ClaimValor.ATUALIZAR),
-                new ClaimApp(ClaimTipo.DENTISTA, ClaimValor.REGISTRAR),
-                new ClaimApp(ClaimTipo.DENTISTA, ClaimValor.EXCLUIR)
+                new ClaimApp(ClaimTipo.PACIENTE, ClaimValor.LER),
+                new ClaimApp(ClaimTipo.PACIENTE, ClaimValor.ATUALIZAR),
+                new ClaimApp(ClaimTipo.PACIENTE, ClaimValor.REGISTRAR),
+                new ClaimApp(ClaimTipo.PACIENTE, ClaimValor.EXCLUIR)
             };
         }
     }

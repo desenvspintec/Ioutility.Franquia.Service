@@ -5,7 +5,7 @@ using Pulsati.Core.Domain.Interfaces.DTOs;
 using Pulsati.Core.Domain.Interfaces.Entitys;
 using Pulsati.Core.Repositorys;
 
-namespace Pulsati.Core.Repository.Repositories
+namespace Pulsati.Core.Repository.Repositorys
 {
     public class EntityBasicRepository<TEntity> : EntityRepository<TEntity> where TEntity : class, IEntityBasic
     {

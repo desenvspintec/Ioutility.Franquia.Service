@@ -18,9 +18,9 @@ namespace Pulsati.Core.Domain.Delegates
         public Func<TRegistrarCommand, TEntity> MapearRegistrarCommandParaDomain { get; set; }
         public Func<TAtualizarCommand, TEntity> MapearAtualizarCommandParaDomain { get; set; }
 
-        public Func<TEntity, TRegistrarCommand, Task> RealizarOperacaoAposRegistrarAsync { get; set; }
-        public Func<TEntity, TAtualizarCommand, Task> RealizarOperacaoAposAtualizarAsync { get; set; }
-        public Func<TEntity, EntityInativarCommand, Task> RealizarOperacaoAposInativarAsync { get; set; }
+        public Func<TEntity, TRegistrarCommand, Task>? RealizarOperacaoAposRegistrarAsync { get; set; }
+        public Func<TEntity, TAtualizarCommand, Task>? RealizarOperacaoAposAtualizarAsync { get; set; }
+        public Func<TEntity, EntityInativarCommand, Task>? RealizarOperacaoAposInativarAsync { get; set; }
 
         public Func<EntityInativarCommand, Task> InativarDependentesAsync { get; set; }
 

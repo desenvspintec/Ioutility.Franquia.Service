@@ -1,4 +1,7 @@
-﻿namespace Pulsati.Core.Domain.Helpers
+﻿using Pulsati.Core.Domain.DTOs.Arquivos;
+using Pulsati.Core.Domain.Helpers.Extensions;
+
+namespace Pulsati.Core.Domain.Helpers
 {
     public static class MensagemErroHelper
     {
@@ -26,9 +29,10 @@
             return msg;
         }
 
-        public static string ArquivoNaoEncontradoNaPastaTemporaria()
+        public static string ArquivoNaoEncontradoNaPastaTemporaria(ConsultarExistenciaArquivosResultadoDTO resultado)
         {
-            return "Não foi possivel continuar. Por favor, realize novamente o upload de arquivos";
+            var arquivosNaoEncontrados = resultado.ArquivosResultado.Where(arquivo => !arquivo.Existe).Select(arquivo => arquivo.Diretorio).ToList();
+            return "Não foi possivel continuar. Por favor, realize novamente o upload dos seguintes arquivos: " + arquivosNaoEncontrados.ConverterListEmString();
         }
 
         public static string MinLength(string propriedade, int tamanhoMinimo)
@@ -73,16 +77,9 @@
 
             return msg;
         }
-
         public static string NumeroMaximo(string propriedade, double numeroMaximo)
         {
             var msg = $"{propriedade} deve ser menor que {numeroMaximo}";
-            return msg;
-        }
-
-        public static string IntervaloNumerico(string propriedade, double minimo, double maximo)
-        {
-            var msg = $"{propriedade} deve estar entre {minimo} e {maximo}";
 
             return msg;
         }

@@ -31,5 +31,7 @@ namespace Pulsati.Core.Domain.Models
             AddValidacao(new ValidarNomeCommand<TEntity>((TEntity)this));
             base.SetValidacoes();
         }
+
+        
     }
 }

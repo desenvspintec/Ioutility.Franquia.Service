@@ -7,6 +7,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Querys\**" />
+	  <EmbeddedResource Remove="Querys\**" />
+	  <None Remove="Querys\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="..\..\.editorconfig" Link=".editorconfig" />
 	</ItemGroup>
 	<ItemGroup>
@@ -19,10 +25,9 @@
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Ioutility.Bus.Commands" Version="1.0.0" />
+		<PackageReference Include="Pulsati.Core.GeradorRelatorio" Version="1.0.2" />
 
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Querys\" />
 	</ItemGroup>
 
 </Project>
