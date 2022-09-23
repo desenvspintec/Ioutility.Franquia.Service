@@ -1,9 +1,30 @@
-﻿namespace Pulsati.Core.Domain.Helpers
+﻿using Pulsati.Core.Domain.Constantes;
+
+namespace Pulsati.Core.Domain.Helpers
 {
     public class ArquivoHelper
     {
-        public const string NOME_PASTA_TEMPORARIA = "tmp/";
+        public const string NOME_PASTA_TEMPORARIA = Constante.PASTA_TEMPORARIA;
         public const string NOME_PASTA_LIXEIRA = "lixeira/";
+
+        public static async Task<byte[]> DownloadAsync(string urlArquivo)
+        {   
+            using var client = new HttpClient();
+            using var result = await client.GetAsync(urlArquivo);
+            
+            if (result.IsSuccessStatusCode)
+                return await result.Content.ReadAsByteArrayAsync();
+
+            throw new Exception($"Não foi possivel baixar o arquivo no endereço solicitado {urlArquivo}. Status: {result.StatusCode}");
+        }
+
+        public static async Task DownloadESalvarAsync(string urlArquivo, string caminhoSalvarDentroDaApp)
+        {
+            var bytes = await DownloadAsync(urlArquivo);
+            var baseCaminhoSalvar = ObterDiretorioAppComArquivosStaticos() + caminhoSalvarDentroDaApp;
+            await ConvertBytesParaArquivo(bytes,  baseCaminhoSalvar);
+        }
+
         public static void Criar(string caminho, string conteudo)
         {
             var fileInfo = new FileInfo(caminho);
@@ -19,10 +40,10 @@
         /// </summary>
         /// <param name="bytes"></param>
         /// <param name="nomeArquivoComDiretorio"></param>
-        public static void ConvertBytesParaArquivo(byte[] bytes, string nomeArquivoComDiretorio)
+        public static async Task ConvertBytesParaArquivo(byte[] bytes, string nomeArquivoComDiretorio)
         {
             Criar(nomeArquivoComDiretorio, "");
-            File.WriteAllBytes(nomeArquivoComDiretorio, bytes);
+            await File.WriteAllBytesAsync(nomeArquivoComDiretorio, bytes);
         }
 
         public static void Excluir(string caminho)
@@ -57,7 +78,7 @@
 
         public static string ObterDiretorioArquivosStaticos()
         {
-            return "wwwroot/" ;
+            return Constante.PADRAO_PASTA_ARQUIVOS_STATICOS;
         }
 
         public static string LerArquivo(string diretorio, bool utilizarDiretorioBaseDeArquivosStaticos = true)
@@ -65,6 +86,12 @@
             if (utilizarDiretorioBaseDeArquivosStaticos)
                 diretorio = ObterDiretorioAppComArquivosStaticos() + diretorio;
             return File.ReadAllText(diretorio);
+        }
+        public static async Task<byte[]> ObterBytesArquivosAsync(string diretorio, bool utilizarDiretorioBaseDeArquivosStaticos = true)
+        {
+            if (utilizarDiretorioBaseDeArquivosStaticos)
+                diretorio = ObterDiretorioAppComArquivosStaticos() + diretorio;
+            return await File.ReadAllBytesAsync(diretorio);
         }
 
         public static string LerArquivoDoDiretorioPadraoStatico(string diretorio)

@@ -63,7 +63,7 @@ namespace Pulsati.Core.Domain.Services.CommandHandlers
             using var storageService = new StorageService();
             await storageService.MoverArquivoRange(moverArquivosDTO);
         }
-
+        
         protected void HabilitarManipulacaoArquivo()
         {
             ValidadorService.AddCommand(new ValidarExistenciaDeArquivoCommand<TEntity>());

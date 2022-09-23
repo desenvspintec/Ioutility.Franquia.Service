@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pulsati.Core.Domain.Interfaces.Repositorys;
-using Pulsati.Core.Repository.Repositories;
+using Pulsati.Core.Repository.Repositorys;
 
 namespace Ioutility.Franquias.Repository.IoC
 {

@@ -19,7 +19,6 @@ namespace Pulsati.Core.Api.Controllers
         where TAtualizarCommand : class, IEntityDTO
         where TBuscaPorIdViewModel : class
     {
-        protected const int quantidadeLimiteResultadoParaBusca = 20;
         protected readonly IEntityQueryRepository<TEntity> RepositoryReadonly;
         protected readonly IMapper Mapper;
         protected readonly EntityCommandHandler<TEntity, TRegistrarCommand, TAtualizarCommand> CommandHandler;
@@ -38,10 +37,13 @@ namespace Pulsati.Core.Api.Controllers
         public async Task<IActionResult> BuscarPorIdAsync(Guid id)
         { 
             if (!EstaAutorizadoLer()) return Forbid();
+
             var entity = await RepositoryReadonly.BuscarPorIdAsync(id);
             if (entity.EstaNulo()) return NotFound("entidade nao encontrada");      
+            
             await RealizarOperacaoAoBuscarPorIdOverrider(entity!); 
             var entityVm = ConverterEntidadeDominioParaViewModel(entity!);
+            
             return Response(entityVm);    
         }
         /// <summary>

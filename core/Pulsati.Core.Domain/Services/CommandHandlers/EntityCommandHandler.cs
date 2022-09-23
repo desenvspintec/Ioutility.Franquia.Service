@@ -58,16 +58,6 @@ namespace Pulsati.Core.Domain.Services.CommandHandlers
             command.Id = Guid.NewGuid();
             CommandHandlerHelper.DefinirDadosDoCommandAntesDoMapParaDomainAoRegistrar(command);
 
-            try
-            {
-                var entityteste = CommandHandlerHelper.MapearCommandParaDomain(command, ETipoOperacaoCrud.Registrar);
-
-            }
-            catch (Exception e)
-            {
-
-            }
-
             var entity = CommandHandlerHelper.MapearCommandParaDomain(command, ETipoOperacaoCrud.Registrar);
             var resultadoValidacao = await ValidadorService.ValidarAsync(entity);
             if (!resultadoValidacao.EstaValido) return;
@@ -126,9 +116,9 @@ namespace Pulsati.Core.Domain.Services.CommandHandlers
             CommandHandlerDelegate.AtualizarDependentesAsync = obterDependentesParaAtualizar;
         }
 
-        public void SetDelegatesDeOperacaoAposFinalizarMetodo(Func<TEntity, TRegistrarCommand, Task> realizarOperacaoAposRegistrarAsync
-            , Func<TEntity, TAtualizarCommand, Task> realizarOperacaoAposAtualizarAsync
-            , Func<TEntity, EntityInativarCommand, Task> realizarOperacaoAposInativarAsync)
+        public void SetDelegatesDeOperacaoAposFinalizarMetodo(Func<TEntity, TRegistrarCommand, Task>? realizarOperacaoAposRegistrarAsync
+            , Func<TEntity, TAtualizarCommand, Task>? realizarOperacaoAposAtualizarAsync
+            , Func<TEntity, EntityInativarCommand, Task>? realizarOperacaoAposInativarAsync)
 
         {
             CommandHandlerDelegate.RealizarOperacaoAposRegistrarAsync = realizarOperacaoAposRegistrarAsync;

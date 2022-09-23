@@ -17,6 +17,7 @@ namespace Pulsati.Core.Api.Controllers
          where TBuscaPorNomeViewModel : class
     {
         protected new readonly IEntityQueryRepository<TEntity> RepositoryReadonly;
+        const int quantidadeLimiteResultadoParaBusca = 20;
         public EntityBasicController(EntityCommandHandler<TEntity, TRegistrarCommand, TAtualizarCommand> commandHandler
             , IEntityQueryRepository<TEntity> repositoryReadonly
             , IMapper mapper

@@ -6,10 +6,10 @@
         {
 
         }
-        public InfoArquivoDTO(string pasta, string nome, string extensao)
+        public InfoArquivoDTO(string pasta, string nomeComExtensao, string extensao)
         {
             Pasta = pasta;
-            Nome = nome;
+            Nome = nomeComExtensao;
             Extensao = extensao;
         }
 
