@@ -15,6 +15,7 @@ namespace Ioutility.Franquias.Domain.Config.Automapper
             CreateMap<EnderecoVO, EnderecoVODTO>();
             CreateMap<DadoBancarioVO, DadosBancariosVODTO>();
             CreateMap<BusinessPayVO, BusinessPayVODTO>();
+            CreateMap<FranquiaAcessoVO, FranquiaAcessoVODTO>();
             CreateMap<Franquia, FranquiaDTO>();
             CreateMap<Procedimento, ProcedimentoDTO>();
             CreateMap<TipoProcedimento, TipoProcedimentoDTO>();

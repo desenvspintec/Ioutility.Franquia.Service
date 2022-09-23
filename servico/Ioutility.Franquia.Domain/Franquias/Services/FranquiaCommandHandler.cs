@@ -26,7 +26,7 @@ namespace Ioutility.Franquias.Domain.Franquias.Services
 
                 novoFranquiaDTO.FranquiaStatus = Enums.EFranquiaStatus.Ativo;
 
-                franquiaDTO.FranquiaAcesso = novoFranquiaDTO;
+                franquiaDTO.Acesso = novoFranquiaDTO;
 
             }
             SetDelegatesDeEntityDependente(definirStatusAtivoAntesDoMap, null, null);

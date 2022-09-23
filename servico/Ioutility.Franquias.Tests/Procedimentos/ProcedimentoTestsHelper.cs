@@ -4,7 +4,7 @@ using Ioutility.Franquias.Domain.Procedimentos.Models;
 
 namespace Ioutility.Franquias.Tests.Testes.Procedimentos
 {
-    public static class ProcedimentoTestsHelper
+    public static class FranquiaTestsHelper
     {
         public static ProcedimentoDTO ObterDTOValido()
         {

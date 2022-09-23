@@ -11,13 +11,13 @@ using Xunit;
 
 namespace Ioutility.Franquias.Tests.Procedimentos
 {
-    public class ProcedimentoHandlerTests
+    public class FranquiaHandlerTests
     {
 
         private readonly CommandHandlerHelper _helper = CommandHandlerHelper.Obter();
         private readonly ProcedimentoCommandHandler _commandHandler;
 
-        public ProcedimentoHandlerTests()
+        public FranquiaHandlerTests()
         {
             _commandHandler = new ProcedimentoCommandHandler(
                 _helper.DomainNotification,
@@ -33,7 +33,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public void Map_DTOToDomain_TodasPropriedadesIguais()
         {
             // arrange
-            var procedimentoDTO = ProcedimentoTestsHelper.ObterDTOValido();
+            var procedimentoDTO = FranquiaTestsHelper.ObterDTOValido();
 
             // act
             var procedimento = _helper.Mapper.Map<Procedimento>(procedimentoDTO);
@@ -48,7 +48,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public void Map_DomainToDTO_TodasPropriedadesIguais()
         {
             // arrange
-            var procedimento = _helper.Mapper.Map<Procedimento>(ProcedimentoTestsHelper.ObterDTOValido());
+            var procedimento = _helper.Mapper.Map<Procedimento>(FranquiaTestsHelper.ObterDTOValido());
 
             // act
             var procedimentoDTO = _helper.Mapper.Map<ProcedimentoDTO>(procedimento);
@@ -76,7 +76,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public async Task EhValido_EstaValido_NaoDeveHaverErrosAsync()
         {
             // arrange
-            var procedimentoDTO = ProcedimentoTestsHelper.ObterDTOValido();
+            var procedimentoDTO = FranquiaTestsHelper.ObterDTOValido();
 
             // act
             await _commandHandler.HandlerRegistrarAsync(procedimentoDTO);
@@ -89,7 +89,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public async Task EhValido_Invalido_DeveHaverErrosLimitesMaximosAsync()
         {
             // arrange
-            var procedimentoDTOInvalidoLimitesMaximosEstouradosComissaoFixa = ProcedimentoTestsHelper.ObterDTOInvalidoLimitesMaximosEstouradosComissaoFixa();
+            var procedimentoDTOInvalidoLimitesMaximosEstouradosComissaoFixa = FranquiaTestsHelper.ObterDTOInvalidoLimitesMaximosEstouradosComissaoFixa();
 
             // act
             await _commandHandler.HandlerRegistrarAsync(procedimentoDTOInvalidoLimitesMaximosEstouradosComissaoFixa);
@@ -108,7 +108,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public async Task EhValido_Invalido_ValorMinimoNaoPodeMaiorQueDemaisValores()
         {
             // arrange
-            var procedimentoDTO = ProcedimentoTestsHelper.ObterDTOValido();
+            var procedimentoDTO = FranquiaTestsHelper.ObterDTOValido();
             procedimentoDTO.ValorMinimo += 10;
 
             // act
@@ -125,7 +125,7 @@ namespace Ioutility.Franquias.Tests.Procedimentos
         public async Task EhValido_Invalido_DeveHaverErrosLimitesMinimosAsync()
         {
             // arrange
-            var procedimentoDTO = ProcedimentoTestsHelper.ObterDTOInvalidoLimitesMinimosEstouradosComissaoFixa();
+            var procedimentoDTO = FranquiaTestsHelper.ObterDTOInvalidoLimitesMinimosEstouradosComissaoFixa();
             procedimentoDTO.ValorMaximo = procedimentoDTO.ValorMinimo - 1;
             procedimentoDTO.ValorSugerido = procedimentoDTO.ValorMinimo - 1;
             // act

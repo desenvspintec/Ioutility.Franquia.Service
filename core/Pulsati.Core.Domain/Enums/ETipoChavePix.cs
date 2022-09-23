@@ -2,6 +2,10 @@
 {
     public enum ETipoChavePix
     {
-        Cpf, Cnpj, Telefone
+        Cpf,
+        Cnpj,
+        Email,
+        Telefone,
+        ChaveAleatoria
     }
 }
